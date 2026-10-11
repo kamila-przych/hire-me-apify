@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kamila Przychodzka Portfolio</title>
+<meta name="description" content="How Kamila Przychodzka uses Claude and MCP to automate HR work and improve the employee experience.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kamila Przychodzka Portfolio">
+<meta property="og:description" content="How Kamila Przychodzka uses Claude and MCP to automate HR work and improve the employee experience.">
+<!-- After you publish, replace YOUR-USERNAME with your GitHub username so link previews show your photo -->
+<meta property="og:image" content="https://YOUR-USERNAME.github.io/portfolio/kamila.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>[hidden]{display:none!important} body{margin:0}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: plum hero band, then light sections on one 1100px column; interactive cards, filter chips and a live rule demo */
+/* Single dark look by choice: near-black ground, light grey text, one blue pop */
+:root{
+  --bg:#020202; --surface:#111214; --surface-2:#0A0A0B; --line:#26282D;
+  --ink:#DFDFDF; --body:#DFDFDF; --muted:#8E929B;
+  --accent:#528FFF; --accent-soft:#132544; --accent-text:#A9C7FF; --accent-2:#E88BB3;
+  --plum:#0C0D10; --plum-2:#1C1E24; --on-plum:#DFDFDF; --on-plum-muted:#A3A7AF; --lime:#528FFF;
+  --warn:#FF7A93; --warn-soft:#2A0E15; --ok:#7FD99A; --ok-soft:#0E2316;
+  --font:'Figtree', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, 'Courier New', monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--bg);color:var(--body);font-family:var(--font);font-size:17px;line-height:1.55}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{color:var(--ink);text-wrap:balance;margin:0}
+p{margin:0}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav .name{font-weight:800;color:var(--ink);margin-right:auto;white-space:nowrap;padding-right:12px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px}
+nav a:hover,nav a.on{background:var(--surface);color:var(--ink)}
+
+/* hero */
+.hero{background:var(--plum);color:var(--on-plum);border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;padding-block:72px}
+.hero .eyebrow{color:var(--lime)}
+.hero h1{color:var(--on-plum);font-size:clamp(44px,7vw,84px);font-weight:800;line-height:1;letter-spacing:-.03em;margin-block:14px 20px}
+.hero p.lead{color:var(--on-plum-muted);font-size:20px;max-width:36ch}
+.me{margin:0;justify-self:end;width:100%;max-width:360px;display:flex;flex-direction:column;gap:18px}
+.hero .who{font-size:22px;font-weight:800;color:var(--on-plum);line-height:1.25}
+.hero .who a.li{display:inline-block;margin-top:8px;font-size:16px;font-weight:700;color:var(--accent);text-decoration:none}
+.hero .who a.li:hover{text-decoration:underline}
+.hero .who span{display:block;font-size:16px;font-weight:400;color:var(--on-plum-muted);margin-top:4px}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:28px;box-shadow:0 0 0 8px var(--plum-2)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.pills span{background:var(--plum-2);color:var(--on-plum);font-size:14px;font-weight:600;padding:6px 14px;border-radius:999px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:-36px;position:relative}
+.stat{background:var(--surface-2);padding:20px 22px}
+.stat b{display:block;font-size:34px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat b.todo{color:var(--muted)}
+.stat span{font-size:14px;color:var(--muted)}
+.footnote{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+
+section.block{padding-block:72px 8px}
+.head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;max-width:720px}
+.head h2{font-size:clamp(28px,3.6vw,40px);font-weight:700;line-height:1.12;letter-spacing:-.02em}
+.head p{color:var(--muted)}
+
+/* filter chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--surface-2);color:var(--body);padding:7px 14px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+
+/* automation cards */
+.autos{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.auto{background:var(--surface-2);border:1px solid var(--line);border-radius:18px;display:flex;flex-direction:column;min-width:0}
+.auto button.top{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:18px}
+.auto button.top:focus-visible{outline:3px solid var(--accent)}
+.meta{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.cad{font-family:var(--mono);font-size:13px;font-weight:500;background:var(--accent-soft);color:var(--accent-text);padding:4px 10px;border-radius:6px}
+.sys{font-size:13px;color:var(--muted)}
+.auto h3{font-size:20px;font-weight:700}
+.auto .out{font-size:15px}
+.more{font-size:14px;font-weight:700;color:var(--accent);display:flex;gap:6px;align-items:center}
+.more i{font-style:normal;transition:transform .2s}
+.auto.open .more i{transform:rotate(45deg)}
+.detail{padding:0 20px 20px;border-top:1px solid var(--line);margin-inline:20px;padding-inline:0;padding-top:14px}
+.why{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 14px;font-size:15px}
+.why dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);padding-top:3px}
+.why dd{margin:0;min-width:0}
+
+/* principles */
+.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pr{background:var(--surface);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.pr h3{font-size:19px}
+.pr p{font-size:15.5px}
+
+/* benefit demo */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
+.step{background:var(--surface);border-radius:18px;padding:18px;min-width:0}
+.step.hero-step{background:var(--plum);color:var(--body)}
+.step.hero-step h3{color:var(--on-plum)}
+.step h3{font-size:17px;margin-bottom:6px}
+.step p{font-size:15px}
+.whybox{margin-top:14px;background:var(--bg);border:3px solid var(--accent);color:var(--body);border-radius:18px;padding:20px 24px;font-size:18px;line-height:1.45;font-weight:600}
+.whybox b{font-weight:800}
+.arrow{align-self:center;color:var(--accent);font-size:24px;font-weight:800}
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:var(--surface-2);border:1px solid var(--line);border-radius:20px;padding:24px}
+.demo .tag{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.field{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.field label{font-size:14px;font-weight:600;color:var(--ink);display:flex;justify-content:space-between}
+.field output{font-family:var(--mono);color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.result{border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.result.flag{background:var(--warn-soft)}
+.result.clean{background:var(--ok-soft)}
+.result .status{font-size:22px;font-weight:800}
+.result.flag .status{color:var(--warn)}
+.result.clean .status{color:var(--ok)}
+.result .line{font-family:var(--mono);font-size:13.5px;color:var(--body);overflow-wrap:anywhere}
+.rules{font-size:14px;color:var(--muted)}
+
+/* two cards */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:var(--surface);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.card.dark{background:var(--plum);color:var(--body)}
+.card.dark h3{color:var(--on-plum)}
+.card h3{font-size:21px}
+.card ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.note{margin-top:14px;background:var(--surface-2);border:1px dashed var(--line);border-radius:14px;padding:14px 18px;font-size:15px}
+.todo{color:var(--muted);font-family:var(--mono);font-size:.9em}
+
+.quad{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.q{background:var(--surface-2);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.q .ic{width:40px;height:40px;border-radius:999px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:800;font-family:var(--mono);font-size:14px}
+.q h3{font-size:18px}
+.q p{font-size:15px}
+
+/* smart brevity */
+.sb{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.sb > div{padding:22px;display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--line);background:var(--surface-2);min-width:0}
+.sb > div:last-child{border-right:0}
+.sb p{font-size:15px;color:var(--muted)}
+.sb .n{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.sb h3{font-size:18px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.tools div{flex:1 1 280px;background:var(--surface);border-radius:14px;padding:16px 20px;font-size:15.5px}
+
+/* roadmap */
+.road{background:var(--plum);border-radius:24px;padding:32px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.road h2{color:var(--on-plum);font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.road .eyebrow{color:var(--lime)}
+.roadintro{display:flex;flex-direction:column;gap:14px;min-width:0}
+.roadintro > p:not(.eyebrow){color:var(--body);font-size:16.5px;max-width:44ch}
+.road ol.steps{display:flex;flex-wrap:wrap;gap:8px;counter-reset:s}
+.road ol.steps li{counter-increment:s;border:none;padding:6px 12px;border-radius:999px;background:var(--plum-2);font-size:14px;font-weight:600;color:var(--body)}
+.road ol.steps li::before{content:counter(s) " ";color:var(--accent);font-family:var(--mono);margin-right:4px}
+.road ol{list-style:none;margin:0;padding:0}
+.road li{display:flex;justify-content:space-between;gap:16px;align-items:center;padding-block:16px;border-bottom:1px solid var(--plum-2);color:var(--on-plum);font-size:19px;font-weight:700}
+.road li:last-child{border-bottom:0}
+.road li small{font-family:var(--mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:var(--plum-2);color:var(--on-plum-muted);white-space:nowrap}
+.road li small.next{background:var(--lime);color:var(--plum)}
+footer{padding-block:48px 64px;color:var(--muted);font-size:14px}
+
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;padding-block:48px 72px}
+  .me{justify-self:start;max-width:220px;order:-1}
+  .principles,.pair,.demo,.road{grid-template-columns:1fr}
+  .quad{grid-template-columns:repeat(2,1fr)}
+  .sb{grid-template-columns:repeat(2,1fr)}
+  .sb > div{border-bottom:1px solid var(--line)}
+  .flow{grid-template-columns:1fr}
+  .arrow{transform:rotate(90deg);justify-self:center}
+}
+@media (max-width:520px){
+  nav .name{display:none}
+  nav .wrap{justify-content:space-between}
+  .quad,.sb{grid-template-columns:1fr}
+  .autos{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Sections"><div class="wrap">
+  <span class="name">Kamila Przychodzka</span>
+  <a href="#automations">Automations</a>
+  <a href="#onboarding">Onboarding</a>
+  <a href="#comms">Comms</a>
+  <a href="#next">Next</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <p class="eyebrow">Portfolio</p>
+    <h1>AI-first People Partner</h1>
+    <p class="lead">How I connect Claude to our HR tools through MCP to analyse data, automate the routine work and improve the employee experience, so nothing falls through the cracks.</p>
+    <div class="pills"><span>Claude Cowork</span><span>Wispr Flow</span><span>Leapsome</span><span>Remote.com</span><span>Notion</span><span>Slack</span><span>Google Workspace</span><span>Claude Design</span></div>
+  </div>
+  <figure class="me">
+    <img class="photo" src="kamila.jpg" alt="Portrait of Kamila Przychodzka">
+    <figcaption class="who">Kamila Przychodzka<span>People Operations Lead, Roamless</span><a class="li" href="https://www.linkedin.com/in/kamila-przychodzka/" target="_blank" rel="noopener">LinkedIn</a></figcaption>
+  </figure>
+</div></header>
+
+<div class="wrap">
+  <div class="stats" aria-label="Key numbers">
+    <div class="stat"><b>6</b><span>systems connected</span><small class="footnote">*In the last 3 months</small></div>
+    <div class="stat"><b>20</b><span>hours saved per month</span><small class="footnote">*Estimated, Leapsome workflows only</small></div>
+  </div>
+
+  <section class="block" id="automations">
+    <div class="head">
+      <p class="eyebrow">Scheduled tasks</p>
+      <h2>Automations that run without me</h2>
+      <p>Each one replaces a manual check or report. Open a card to see the problem, the solution and the impact.</p>
+    </div>
+    <div class="chips" role="group" aria-label="Filter by cadence">
+      <button class="chip" aria-pressed="true" data-f="all">All</button>
+      <button class="chip" aria-pressed="false" data-f="daily">Daily</button>
+      <button class="chip" aria-pressed="false" data-f="monthly">Monthly</button>
+      <button class="chip" aria-pressed="false" data-f="event">On event</button>
+    </div>
+    <div class="autos" id="autos"></div>
+  </section>
+
+  <section class="block" id="onboarding">
+    <div class="head">
+      <p class="eyebrow">Onboarding and offboarding</p>
+      <h2>Pre-onboarding, onboarding and offboarding in one system</h2>
+    </div>
+    <div class="pair">
+      <div class="card"><h3>Onboarding workflow</h3><ul><li>Pre-onboarding platform: new hires see what is waiting for them and their tasks before day one</li><li>Tasks for each owner: new hire, People Team, manager, IT</li><li>Automatic enrolment in lifecycle feedback surveys</li><li>Documents sent for signature automatically</li></ul></div>
+      <div class="card dark"><h3>Offboarding workflow</h3><ul><li>Tasks for each owner: leaver, People Team, manager, IT</li><li>Set up by exit type and legal entity</li><li>Automatic enrolment in the exit feedback survey</li><li>Documents sent for signature automatically</li></ul></div>
+    </div>
+    <p class="whybox"><b>Why:</b> everyone involved works in one system, Leapsome, with no other tool needed. I launched it in my first 3 months, and 20 people have been onboarded with it so far.</p>
+  </section>
+
+  <section class="block" id="comms">
+    <div class="head">
+      <p class="eyebrow">Internal communication</p>
+      <h2>Every message answers 4 questions</h2>
+      <p>I write in smart brevity, so people get the information they need and never skip my messages.</p>
+    </div>
+    <div class="sb">
+      <div><span class="n">1</span><h3>Why</h3><p>One line on why the message exists.</p></div>
+      <div><span class="n">2</span><h3>What's in it for you</h3><p>What changes for the reader, so they keep reading.</p></div>
+      <div><span class="n">3</span><h3>Where to find more</h3><p>Where the full information lives.</p></div>
+      <div><span class="n">4</span><h3>Action needed</h3><p>What the reader must do. If nothing, "none".</p></div>
+    </div>
+    <div class="tools">
+      <div><b>Claude Design</b> for monthly All Hands slides and onboarding session slides.</div>
+      <div><b>Same standard in automations.</b> My scheduled reports follow the same structure: why, key numbers, what needs a check, and action.</div>
+    </div>
+  </section>
+
+  <section class="block" id="next">
+    <div class="road">
+      <div class="roadintro"><p class="eyebrow">What's next</p><h2>From automations to tools</h2>
+        <p>Three tools to build connection and belonging in a fully remote team. I build them with design thinking: employees are my users, and every tool starts with their real needs, not my assumptions.</p>
+        <ol class="steps" aria-label="How I build"><li>Discover</li><li>Prototype</li><li>Gather feedback</li><li>Iterate</li></ol>
+      </div>
+      <ol>
+        <li>Onboarding buddy matching tool <small class="next">Next</small></li>
+        <li>Donut-style connection tool <small class="next">Next</small></li>
+        <li>Nectar-style recognition tool <small>Later</small></li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>Kamila Przychodzka &middot; People Operations Lead, Roamless</footer>
+</div>
+
+<script>
+const AUTOS = [
+  {f:'monthly',cad:'1st of the month',t:'Board-ready people dashboard and org chart',sys:'Leapsome, Gmail, Google Drive',out:'In the CEO\'s mailbox and shared Drive',
+    p:'For each board meeting, the CEO needed people data and an org chart from several places, in a form he could add to his slides.',
+    s:'On the first day of each month, Claude builds a visual org chart and one dashboard: headcount, new hires, leavers, tenure and open roles.',
+    i:'All people data in one place, ready for the board deck, with no requests to the People Team.'},
+  {f:'monthly',cad:'Last business day',t:'Leave records kept in sync across HRIS and EOR platform',sys:'Leapsome, Remote.com, Gmail',out:'Monthly Excel of every leave mismatch',
+    p:'Leave for EOR employees lives in two systems, Leapsome and Remote.com. They share no employee ID, and nothing checked that they match.',
+    s:'Claude reads both systems through MCP, matches people by name, maps leave types between them and lists every mismatch. Unclear matches go to a "Needs your check" tab.',
+    i:'Mismatches are found and fixed every month, without a manual side-by-side comparison.'},
+  {f:'daily',cad:'Every weekday',t:'Over-budget benefit requests caught before purchase',sys:'Notion, Slack',out:'Slack message with a Notion link',
+    p:'Benefit requests and budgets live in Notion, but Notion cannot check each new request against the budget and alert me. An over-budget order could slip through.',
+    s:'Claude reads the database through MCP, computes spent and remaining per person, and flags risky requests with a direct Notion link.',
+    i:'Problems show up before money is spent, and each request goes to the right person by location.'},
+  {f:'monthly',cad:'Last Friday',t:'New-hire blockers surfaced every month',sys:'Leapsome, Slack',out:'Slack report: red flags and top 3 topics',
+    p:'Leapsome sends no notification when a new hire fills in the onboarding survey, so I had to check it by hand. Its sentiment score also rated "I don\'t have a manager yet" as neutral, so real blockers stayed hidden.',
+    s:'Claude groups new comments by topic and flags blockers by what they say, not only by their score.',
+    i:'A fresh report reaches me in Slack every month, without opening the survey platform. Every blocker is listed, with the top onboarding topics at a glance.'},
+  {f:'event',cad:'New hire added',t:'IT never misses a new starter',sys:'Leapsome, Notion',out:'Ticket in the IT HelpDesk',
+    p:'A recruiter had to tell IT about a new starter. IT works in its own ticketing system in Notion, and its work is measured by closed tickets. Onboarding tasks in Leapsome, even if completed, stayed invisible to their manager.',
+    s:'When a new employee is added to Leapsome, a ticket is created automatically in the IT HelpDesk database in Notion.',
+    i:'No new starter is missed, and IT\'s work counts where it is measured.'},
+  {f:'daily',cad:'Every day',t:'Daily coaching tied to my real work',sys:'Leapsome, Slack, Notion, Calendar, Gmail',out:'One tip in my Slack DM',
+    p:'I wanted to get better at AI and HR tools every day, without extra time for research.',
+    s:'Claude checks my recent activity across five tools and sends one tip tied to a real item, in under 80 words.',
+    i:'Small, steady improvements in how I work, based on my own work, not generic advice.'}
+];
+const box = document.getElementById('autos');
+AUTOS.forEach((a,i)=>{
+  const el = document.createElement('article');
+  el.className='auto'; el.dataset.f=a.f;
+  el.innerHTML = `<button class="top" aria-expanded="false" aria-controls="d${i}">
+      <div class="meta"><span class="cad">${a.cad}</span><span class="sys">${a.sys}</span></div>
+      <h3>${a.t}</h3><p class="out">${a.out}</p>
+      <span class="more"><i>+</i> Why</span></button>
+    <div class="detail" id="d${i}" hidden><dl class="why">
+      <dt>Problem</dt><dd>${a.p}</dd>
+      <dt>Solution</dt><dd>${a.s}</dd>
+      <dt>Impact</dt><dd>${a.i}</dd></dl></div>`;
+  const btn = el.querySelector('button'), det = el.querySelector('.detail');
+  btn.addEventListener('click',()=>{
+    const open = det.hidden; det.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open)); el.classList.toggle('open', open);
+  });
+  box.appendChild(el);
+});
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed', String(x===c)));
+  const f = c.dataset.f;
+  box.querySelectorAll('.auto').forEach(a=>{ a.hidden = !(f==='all' || a.dataset.f===f); });
+}));
+
+const $ = id => document.getElementById(id);
+
+/* active nav link */
+const links = [...document.querySelectorAll('nav a')];
+const io = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting) links.forEach(l=>l.classList.toggle('on', l.getAttribute('href')==='#'+e.target.id));
+}),{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('section.block').forEach(s=>io.observe(s));
+</script>
+
+</body>
+</html>
